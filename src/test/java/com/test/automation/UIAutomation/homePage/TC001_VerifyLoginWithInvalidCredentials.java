@@ -2,6 +2,7 @@ package com.test.automation.UIAutomation.homePage;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -20,12 +21,13 @@ public class TC001_VerifyLoginWithInvalidCredentials {
 	@BeforeTest
 	public void setUp() {
 	    
+		// adding to git
 		System.setProperty("webdriver.chrome.driver", "C:/Users/sshaikh/Desktop/Personal-Data/Selenium-lib/chromedriver.exe");
         driver=new ChromeDriver();
 		
 		
 	}
-	@Test
+	@Test(priority=1)
 	public void VerifyLoginWithInvalidCredentials() {
 		
 		driver.get("https://www.flipkart.com/");
@@ -42,7 +44,8 @@ public class TC001_VerifyLoginWithInvalidCredentials {
         Actions action = new Actions(driver);
         action.moveToElement(assured).build().perform();
         assured.click();
-        
+        Alert alert=driver.switchTo().alert(); 
+              
        JavascriptExecutor js = (JavascriptExecutor) driver;
        js.executeScript("window.scrollBy(0,500)");
        driver.findElement(By.xpath("//*[@id='container']/div/div[1]/div/div[2]/div[1]/div[1]/div/div[1]/div/section[5]/div[2]/div[1]/div[2]/div/div/label/div[2]")).click();
